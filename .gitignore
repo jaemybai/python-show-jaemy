@@ -1,0 +1,11 @@
+venv
+.idea
+*.pyc
+__pycache__
+
+.idea/
+*.ipr
+*.iml
+*.iws
+
+*\build\
