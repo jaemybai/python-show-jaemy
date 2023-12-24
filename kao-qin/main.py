@@ -58,7 +58,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def update_time(self):
         weekday_map = ["一", "二", "三", "四", "五", "六", "日"]
         current_time = datetime.now()
-        time_day = current_time.strftime("%Y年%m月%d日")
+
+        time_day = str(current_time.year) + "年" + str(current_time.month) + "月" + str(current_time.day) + "日"
         week_day = current_time.weekday()
         time_second = current_time.strftime("%H:%M:%S")
         time_format = time_day + " 星期" + weekday_map[week_day] + " " + time_second
