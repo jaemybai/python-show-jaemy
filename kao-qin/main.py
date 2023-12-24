@@ -31,6 +31,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowTitle("考勤V1.0")
         self.start_time_for_thread()
         screen_size = QDesktopWidget().screenGeometry()
         width = screen_size.width()
@@ -38,7 +39,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.middleRightWidget.setMinimumWidth(int(width * 0.5))
         self.middleLefetWidget.setMaximumWidth(int(width / 3))
 
-        self.search_button.clicked.connect(self.search_table)
         self.int_chart_view()
         self.connectSlots()
         self.table_header = ''  # 存储表头
@@ -107,8 +107,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         self.menuLoadExcelAction.triggered.connect(self.loanExcelData)
         self.menuQuitAction.triggered.connect(self.close)
+        self.search_button.clicked.connect(self.search_table)
 
     def loanExcelData(self):
+        start_date = datetime.strptime("2023-12-25 00:00:00".strip(), "%Y-%m-%d %H:%M:%S")
+        current_time = datetime.now()
+        time_diff = current_time - start_date
+        day = int(time_diff.total_seconds()/3600/24)
+        if day >= 3:
+            QMessageBox.warning(self, '警告', '试用已到期，请联系后台管理员激活！')
+            return
         path, _ = QFileDialog.getOpenFileName(
             self, '请选择文件', '', 'excel(*.xlsx *.xls)')
         if not path:
