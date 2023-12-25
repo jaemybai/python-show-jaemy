@@ -21,11 +21,12 @@ class Example(QWidget):
         self.btn.clicked.connect(self.showDialog)
 
         self.frm = QFrame(self)
-        self.frm.setStyleSheet("QWidget { background-color: %s }"
-                               % col.name())
-        self.frm.setGeometry(130, 22, 100, 100)
+        # self.frm.setStyleSheet("QWidget { background-color: %s }"
+        #                        % col.name())
+        self.frm.setStyleSheet("QWidget { background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); }")
+        self.frm.setGeometry(130, 22, 400, 400)
 
-        self.setGeometry(300, 300, 250, 180)
+        self.setGeometry(300, 300, 600, 600)
         self.setWindowTitle('Color dialog')
         self.show()
 

@@ -12,6 +12,8 @@ class Example(QWidget):
 
     def initUI(self):
         self.lbl = QLabel(self)
+        self.lbl.setText("标签")
+        self.lbl.setStyleSheet("QLabel {color:white;font-size:40px;font-family:Roman times;}")
         # 创建一个QLineEdit对象。
         qle = QLineEdit(self)
 

@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(85, 170, 127);</string>
+    <string notr="true"/>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -115,6 +115,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="layoutDirection">
@@ -151,6 +152,7 @@
                  <weight>75</weight>
                  <italic>false</italic>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
@@ -164,6 +166,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
@@ -183,6 +186,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
@@ -204,6 +208,7 @@
                  <pointsize>8</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="verticalScrollBarPolicy">
@@ -295,10 +300,11 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
-                <string>进出进出TOP3</string>
+                <string>进出时长TOP3</string>
                </property>
               </widget>
              </item>
@@ -316,6 +322,7 @@
                  <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="autoFillBackground">
@@ -425,6 +432,7 @@
              <font>
               <weight>75</weight>
               <bold>true</bold>
+              <kerning>false</kerning>
              </font>
             </property>
             <property name="text">
@@ -463,6 +471,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
@@ -486,6 +495,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">
@@ -509,6 +519,7 @@
                 <font>
                  <weight>75</weight>
                  <bold>true</bold>
+                 <kerning>false</kerning>
                 </font>
                </property>
                <property name="text">

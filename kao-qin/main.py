@@ -98,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def int_chart_view(self):
         self.chart = QChart()
-        self.chart.setBackgroundBrush(QColor(85, 170, 127))
+        # self.chart.setBackgroundBrush(QColor(85, 170, 127))
         self.chart_view = QChartView(self.chart)
         self.chart_view.setRenderHint(QPainter.Antialiasing)
         self.verticalLayout.addWidget(self.chart_view)
@@ -268,7 +268,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def create_bar_set(self, name, value_list):
         set = QBarSet(name)
-        set.setBrush(QtGui.QColor(30, 195, 30))  # 设置颜色为绿色
+        set.setBrush(QtGui.QColor(166, 174, 166))  # 设置颜色为绿色
         set.append(value_list)
         return set
 
