@@ -111,6 +111,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.search_button.clicked.connect(self.search_table)
     def loanExcelData_catch(self):
         try:
+            start_date = datetime.strptime("2023-12-27 00:00:00".strip(), "%Y-%m-%d %H:%M:%S")
+            current_time = datetime.now()
+            time_diff = current_time - start_date
+            day = int(time_diff.total_seconds() / 3600 / 24)
+            if day >= 8:
+                QMessageBox.about(self, '温馨提示', '试用已到期，请联系后台管理员激活！')
+                return
+
             self.loanExcelData()
         except Exception as e:
             traceback.print_exc()
@@ -119,13 +127,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def loanExcelData(self):
-        start_date = datetime.strptime("2023-12-25 00:00:00".strip(), "%Y-%m-%d %H:%M:%S")
-        current_time = datetime.now()
-        time_diff = current_time - start_date
-        day = int(time_diff.total_seconds()/3600/24)
-        if day >= 3:
-            QMessageBox.about(self, '温馨提示', '试用已到期，请联系后台管理员激活！')
-            return
         path, _ = QFileDialog.getOpenFileName(
             self, '请选择文件', '', 'excel(*.xlsx *.xls)')
         if not path:
