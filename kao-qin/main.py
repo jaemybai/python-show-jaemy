@@ -98,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def int_chart_view(self):
         self.chart = QChart()
-        # self.chart.setBackgroundBrush(QColor(85, 170, 127))
+        self.chart.setBackgroundBrush(QColor(85, 170, 127))
         self.chart_view = QChartView(self.chart)
         self.chart_view.setRenderHint(QPainter.Antialiasing)
         self.verticalLayout.addWidget(self.chart_view)
@@ -106,9 +106,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def connectSlots(self):
         """connect slots with buttons/
         """
-        self.menuLoadExcelAction.triggered.connect(self.loanExcelData)
+        self.menuLoadExcelAction.triggered.connect(self.loanExcelData_catch)
         self.menuQuitAction.triggered.connect(self.close)
         self.search_button.clicked.connect(self.search_table)
+    def loanExcelData_catch(self):
+        try:
+            self.loanExcelData()
+        except Exception as e:
+            traceback.print_exc()
+            QMessageBox.about(self, '温馨提示', '文件解析异常！')
+            return
+
 
     def loanExcelData(self):
         start_date = datetime.strptime("2023-12-25 00:00:00".strip(), "%Y-%m-%d %H:%M:%S")
@@ -116,12 +124,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         time_diff = current_time - start_date
         day = int(time_diff.total_seconds()/3600/24)
         if day >= 3:
-            QMessageBox.warning(self, '警告', '试用已到期，请联系后台管理员激活！')
+            QMessageBox.about(self, '温馨提示', '试用已到期，请联系后台管理员激活！')
             return
         path, _ = QFileDialog.getOpenFileName(
             self, '请选择文件', '', 'excel(*.xlsx *.xls)')
         if not path:
-            QMessageBox.warning(self, '警告', '请选择xlsx或者xls文件！')
+            QMessageBox.about(self, '温馨提示', '请选择xlsx或者xls文件！')
             return
         if _.find('*.xlsx'):
             return self.parseExcel(path)
@@ -132,7 +140,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if path:
             self.file_path = path
         else:
-            QMessageBox.warning(self, '警告', '请选择文件！')
+            QMessageBox.about(self, '温馨提示', '请选择文件！')
 
         excel_data = pandas.read_excel(self.file_path)
         # 获取excel数据行数
@@ -164,7 +172,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.add_depayment_member_chart(self.memberStats.member_stat_by_department_series)
         except Exception as e:
             traceback.print_exc()
-            QMessageBox.warning(self, '警告', '文件解析异常！')
+            QMessageBox.about(self, '温馨提示', '文件解析异常！')
             return
 
     def load_table_from_data_frame(self, data_frame, q_table_widget):
@@ -268,7 +276,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def create_bar_set(self, name, value_list):
         set = QBarSet(name)
-        set.setBrush(QtGui.QColor(166, 174, 166))  # 设置颜色为绿色
+        # set.setBrush(QtGui.QColor(166, 174, 166))  # 设置颜色为绿色
+        set.setBrush(QtGui.QColor(30, 195, 30))  # 设置颜色为绿色
         set.append(value_list)
         return set
 
